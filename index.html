@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简洁工具导航 | 精选实用工具</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #a5b4fc;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            background-image: linear-gradient(to right, rgba(67, 97, 238, 0.1), rgba(72, 149, 239, 0.1));
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3.5rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        .tool-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .category {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            padding: 1rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .tool-list {
+            padding: 1rem;
+            list-style: none;
+        }
+
+        .tool-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .tool-link:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+
+        .tool-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .tool-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h1>实用工具导航</h1>
+            </div>
+            <p class="subtitle">精选最常用的在线工具，提升工作效率</p>
+            
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="搜索工具...">
+            </div>
+        </header>
+        
+        <div class="tool-categories">
+            <!-- 开发工具 -->
+            <div class="category">
+                <div class="category-header">
+                    <i class="fas fa-code"></i>
+                    <h2 class="category-title">开发工具</h2>
+                </div>
+                <ul class="tool-list">
+                    <li class="tool-item">
+                        <a href="https://github.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fab fa-github"></i></span>
+                            <span>GitHub - 代码托管</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://codepen.io" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fab fa-codepen"></i></span>
+                            <span>CodePen - 前端代码测试</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://jsonformatter.org" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-file-code"></i></span>
+                            <span>JSON格式化工具</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://regex101.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-terminal"></i></span>
+                            <span>正则表达式测试</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 设计工具 -->
+            <div class="category">
+                <div class="category-header">
+                    <i class="fas fa-paint-brush"></i>
+                    <h2 class="category-title">设计工具</h2>
+                </div>
+                <ul class="tool-list">
+                    <li class="tool-item">
+                        <a href="https://www.figma.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fab fa-figma"></i></span>
+                            <span>Figma - 在线设计</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://colorhunt.co" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-palette"></i></span>
+                            <span>Color Hunt - 配色方案</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://fonts.google.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-font"></i></span>
+                            <span>Google Fonts - 字体库</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://tinypng.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-image"></i></span>
+                            <span>TinyPNG - 图片压缩</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 网络工具 -->
+            <div class="category">
+                <div class="category-header">
+                    <i class="fas fa-globe"></i>
+                    <h2 class="category-title">网络工具</h2>
+                </div>
+                <ul class="tool-list">
+                    <li class="tool-item">
+                        <a href="https://ip.cn" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-network-wired"></i></span>
+                            <span>IP查询</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://ping.pe" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-server"></i></span>
+                            <span>Ping测试</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.whatismybrowser.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-desktop"></i></span>
+                            <span>浏览器检测</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.base64decode.org" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-lock"></i></span>
+                            <span>Base64编码解码</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 文档工具 -->
+            <div class="category">
+                <div class="category-header">
+                    <i class="fas fa-file-alt"></i>
+                    <h2 class="category-title">文档工具</h2>
+                </div>
+                <ul class="tool-list">
+                    <li class="tool-item">
+                        <a href="https://docs.qq.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-file-word"></i></span>
+                            <span>腾讯文档</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.ilovepdf.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-file-pdf"></i></span>
+                            <span>PDF工具合集</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://smallpdf.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-file-contract"></i></span>
+                            <span>Smallpdf - PDF处理</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.onlineocr.net" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-text-height"></i></span>
+                            <span>OCR文字识别</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 转换工具 -->
+            <div class="category">
+                <div class="category-header">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h2 class="category-title">转换工具</h2>
+                </div>
+                <ul class="tool-list">
+                    <li class="tool-item">
+                        <a href="https://www.online-convert.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-file-export"></i></span>
+                            <span>文件格式转换</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://csvjson.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-table"></i></span>
+                            <span>CSV转JSON</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.unitconverters.net" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-ruler-combined"></i></span>
+                            <span>单位换算</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.timeanddate.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="far fa-clock"></i></span>
+                            <span>时间日期转换</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- AI工具 -->
+            <div class="category">
+                <div class="category-header">
+                    <i class="fas fa-robot"></i>
+                    <h2 class="category-title">AI工具</h2>
+                </div>
+                <ul class="tool-list">
+                    <li class="tool-item">
+                        <a href="https://chat.openai.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-comment-dots"></i></span>
+                            <span>ChatGPT</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.midjourney.com" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-paint-brush"></i></span>
+                            <span>Midjourney - AI绘画</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.notion.so" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-sticky-note"></i></span>
+                            <span>Notion AI</span>
+                        </a>
+                    </li>
+                    <li class="tool-item">
+                        <a href="https://www.remove.bg" class="tool-link" target="_blank">
+                            <span class="tool-icon"><i class="fas fa-image"></i></span>
+                            <span>AI背景去除</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 实用工具导航 | 每日更新优质工具资源</p>
+        </footer>
+    </div>
+</body>
+</html>
